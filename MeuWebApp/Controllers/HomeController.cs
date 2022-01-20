@@ -1,4 +1,5 @@
 ﻿using MeuWebApp.Models;
+using MeuWebApp.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,6 +26,7 @@ namespace MeuWebApp.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Message"] = "Esse é um teste para o curso.";
             return View();
         }
 
