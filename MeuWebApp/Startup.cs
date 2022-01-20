@@ -27,8 +27,15 @@ namespace MeuWebApp
         {
             services.AddControllersWithViews();
 
+            string mySqlConnectionStr = Configuration.GetConnectionString("MeuWebAppContext");
             services.AddDbContext<MeuWebAppContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MeuWebAppContext")));
+            options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+
+            /*services.AddDbContext<MeuWebAppContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("MeuWebAppContext"),
+                    builder => builder.MigrationsAssembly("MeuWebApp")));*/
+
+            //options.UseSqlServer(Configuration.GetConnectionString("MeuWebAppContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
