@@ -3,14 +3,16 @@ using System;
 using MeuWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MeuWebApp.Migrations
 {
     [DbContext(typeof(MeuWebAppContext))]
-    partial class MeuWebAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220120222150_OutrasEntidades")]
+    partial class OutrasEntidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

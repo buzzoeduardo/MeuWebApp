@@ -14,6 +14,8 @@ namespace MeuWebApp.Data
         {
         }
 
-        public DbSet<MeuWebApp.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Oficial> Oficial { get; set; }
+        public DbSet<Venda> Venda { get; set; }
     }
 }

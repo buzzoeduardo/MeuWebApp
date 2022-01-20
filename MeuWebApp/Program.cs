@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// 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 - Token para o GitHub
+
 namespace MeuWebApp
 {
     public class Program
