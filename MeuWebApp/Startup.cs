@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MeuWebApp.Data;
+using MeuWebApp.Services;
 
 namespace MeuWebApp
 {
@@ -38,6 +39,8 @@ namespace MeuWebApp
             //options.UseSqlServer(Configuration.GetConnectionString("MeuWebAppContext")));
 
             services.AddScoped<SeedingService>(); //Registra o serviço no sistema de injeção de dependências
+
+            services.AddScoped<ServiceVendedor>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
