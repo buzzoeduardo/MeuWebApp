@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MeuWebApp.Data;
 using MeuWebApp.Models;
 using Microsoft.EntityFrameworkCore;
+using MeuWebApp.Services.Exception;
 
 namespace MeuWebApp.Services
 {
@@ -36,6 +37,24 @@ namespace MeuWebApp.Services
             var obj = _context.Oficial.Find(id);
             _context.Oficial.Remove(obj);
             _context.SaveChanges();
+        }
+
+        public void Update(Oficial obj)
+        {
+            if (!_context.Oficial.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Cadastro inexistente");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+           
         }
     }
 }
