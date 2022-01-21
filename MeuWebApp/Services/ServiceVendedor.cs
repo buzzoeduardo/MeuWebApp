@@ -22,8 +22,7 @@ namespace MeuWebApp.Services
         }
 
         public void Inserir(Oficial obj)
-        {
-            obj.Department = _context.Department.First();
+        {           
             _context.Add(obj);//Inclue o ojb no Oficial
             _context.SaveChanges();//Salva no Banco de Dados
         }
