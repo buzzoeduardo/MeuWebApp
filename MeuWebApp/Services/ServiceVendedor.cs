@@ -26,5 +26,15 @@ namespace MeuWebApp.Services
             _context.Add(obj);//Inclue o ojb no Oficial
             _context.SaveChanges();//Salva no Banco de Dados
         }
+        public Oficial FindById(int id)
+        {
+            return _context.Oficial.FirstOrDefault(obj => obj.Id == id);
+        }
+        public void Remove(int id)
+        {
+            var obj = _context.Oficial.Find(id);
+            _context.Oficial.Remove(obj);
+            _context.SaveChanges();
+        }
     }
 }

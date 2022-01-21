@@ -38,5 +38,25 @@ namespace MeuWebApp.Controllers
             _servicoVendedor.Inserir(oficial);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Delete(int? id) // A interrogação é para indicar que é opcional
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj =_servicoVendedor.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _servicoVendedor.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
