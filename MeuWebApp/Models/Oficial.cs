@@ -13,6 +13,7 @@ namespace MeuWebApp.Models
         public DateTime DataNasc { get; set; }
         public double SalarioBase { get; set; }
         public Department Department { get; set; }
+        public int DepartmentId { get; set; }
         public ICollection<Venda> Vendas { get; set; } = new List<Venda>();
 
         public Oficial()
