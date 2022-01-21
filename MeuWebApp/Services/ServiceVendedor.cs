@@ -20,5 +20,11 @@ namespace MeuWebApp.Services
         {
             return _context.Oficial.ToList();
         }
+
+        public void Inserir(Oficial obj)
+        {
+            _context.Add(obj);//Inclue o ojb no Oficial
+            _context.SaveChanges();//Salva no Banco de Dados
+        }
     }
 }
