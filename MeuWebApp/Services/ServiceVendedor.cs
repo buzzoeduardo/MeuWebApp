@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MeuWebApp.Data;
 using MeuWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeuWebApp.Services
 {
@@ -28,7 +29,7 @@ namespace MeuWebApp.Services
         }
         public Oficial FindById(int id)
         {
-            return _context.Oficial.FirstOrDefault(obj => obj.Id == id);
+            return _context.Oficial.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
         public void Remove(int id)
         {
