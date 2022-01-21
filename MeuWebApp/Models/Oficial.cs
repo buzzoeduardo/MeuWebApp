@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeuWebApp.Models
 {
@@ -9,10 +10,21 @@ namespace MeuWebApp.Models
         public int Id { get; set; }
         //public int Re { get; set; }
         public string Nome { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataNasc { get; set; }
+
+        [Display(Name = "Salário Base")]
+        [DisplayFormat(DataFormatString ="{0:F2}")]
         public double SalarioBase { get; set; }
         public Department Department { get; set; }
+
+        [Display(Name = "Departamento")]
         public int DepartmentId { get; set; }
         public ICollection<Venda> Vendas { get; set; } = new List<Venda>();
 
