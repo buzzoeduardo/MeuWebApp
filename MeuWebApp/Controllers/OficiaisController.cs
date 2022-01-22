@@ -37,6 +37,12 @@ namespace MeuWebApp.Controllers
         [ValidateAntiForgeryToken]//Para prevenir que a aplicação receba ataques CSFR, aquela que aproveita a sessão de autenticação e envia dados maliciosos aproveitando a autenticação
         public IActionResult Create(Oficial oficial)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FinsAll();
+                var viewModel = new ModelodeFormOficiais { Oficial = oficial, Departments = departments };
+                return View(oficial);
+            }
             _servicoVendedor.Inserir(oficial);
             return RedirectToAction(nameof(Index));
         }
@@ -96,6 +102,12 @@ namespace MeuWebApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Oficial oficial)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FinsAll();
+                var viewModel = new ModelodeFormOficiais { Oficial = oficial, Departments = departments };
+                return View(oficial);
+            }
             if (id != oficial.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id não corresponde" });
